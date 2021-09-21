@@ -6,29 +6,70 @@ from typing import List
 
 
 def convert_to_absolute(number: float) -> float:
-    return 0
+    if number < 0:
+        return number + (number * -2)
+    else:
+        return number
 
 
 def use_prefixes() -> List[str]:
+    noms = []
     prefixes, suffixe = 'JKLMNOPQ', 'ack'
-
-    return [""]
+    for i in range(len(prefixes)):
+        noms.append(prefixes[i] + suffixe)
+    return noms
 
 
 def prime_integer_summation() -> int:
-    return 0
+    nb_premiers = []
+    nombre = 2
+    somme = 0
+    while len(nb_premiers) < 100:
+        for i in range(2, nombre):
+            if nombre % i == 0:
+                nombre += 1
+                break
+        else:
+            nb_premiers.append(nombre)
+            nombre += 1
+    for j in range(len(nb_premiers)):
+        somme += nb_premiers[j]
+    return somme
 
 
 def factorial(number: int) -> int:
-    return 0
+    if number == 0:
+        return 1
+    fact = 1
+    for i in range(2, number + 1):
+        fact *= i
+    return fact
 
 
 def use_continue() -> None:
-    pass
+    for i in range(1, 10 + 1):
+        if i == 5:
+            continue
+        print(i)
 
 
 def verify_ages(groups: List[List[int]]) -> List[bool]:
-    return []
+    groupe_bool = []
+    for i in groups:
+        if len(i) > 10 or len(i) < 4:
+            groupe_bool.append(False)
+            continue
+        elif 25 in i:
+            groupe_bool.append(True)
+            continue
+        elif min(i) < 18:
+            groupe_bool.append(False)
+            continue
+        elif max(i) > 70 and 50 in i:
+            groupe_bool.append(False)
+            continue
+        groupe_bool.append(True)
+    return groupe_bool
 
 
 def main() -> None:
